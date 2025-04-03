@@ -41,17 +41,16 @@ This is an interactive financial calculator built with HTML, CSS, and JavaScript
    cd apartment-loan-simulator
 
 2.  **Dependencies:**
-The project uses Chart.js for graphing. It’s included via CDN in the HTML.
-
-No other external dependencies are required.
+    - The project uses Chart.js for graphing. It’s included via CDN in the HTML.
+    - No other external dependencies are required.
 
 3.  **File Structure:**
 
-apartment-loan-simulator/
-├── index.html    # Main HTML file
-├── styles.css    # CSS styling
-├── script.js     # JavaScript logic
-└── README.md     # This file
+-    apartment-loan-simulator/
+     ├── index.html    # Main HTML file
+     ├── styles.css    # CSS styling
+     ├── script.js     # JavaScript logic
+     └── README.md     # This file
 
 4.  **Run Locally:**
    - Open index.html in a web browser (e.g., Chrome, Firefox).
