@@ -2,6 +2,8 @@
 
 This is an interactive financial calculator built with HTML, CSS, and JavaScript to simulate the financial aspects of owning an apartment. It models loan repayments, property value growth, rent income, cash flow, and total asset value based on user-defined inputs. The tool is designed for financial planning and provides detailed outputs, graphs, and a year-by-year breakdown.
 
+Try the live demo here: [Apartment Loan Simulator Demo](https://carstoneous.github.io/Loan-and-Investment-Calculator/)
+
 ## Features
 
 - **Loan Modeling:**
