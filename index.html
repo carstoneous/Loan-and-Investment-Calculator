@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Loan and Investment Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Apartment Loan and Investment Simulator</h1>
+            <p>This tool allows you to simulate the financial aspects of your apartment valued at €600,000 with an existing debt of €300,000. Input your monthly rent income (default €2,500, adjustable), adjust loan duration, interest rates, amortization types, and simulate property value growth, rent income growth, and other variables—all in euros—to see their impact on your finances. It also calculates total accumulated cash flow, the value of investing it, and your total asset value.</p>
+        </header>
+
+        <div class="calculator">
+            <div class="input-section">
+                <h2>Input Parameters</h2>
+                
+                <div class="static-inputs">
+                    <div class="input-group">
+                        <label for="apartment-value">Apartment Value (€)</label>
+                        <input type="number" id="apartment-value" value="600000" min="0" step="1000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="existing-debt">Existing Debt (€)</label>
+                        <input type="number" id="existing-debt" value="300000" min="0" step="1000">
+                    </div>
+                </div>
+                
+                <div class="dynamic-inputs">
+                    <div class="input-group">
+                        <label for="loan-amount">Loan Amount (€)</label>
+                        <input type="number" id="loan-amount" value="300000" min="0" step="1000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loan-duration">Loan Duration (years)</label>
+                        <div class="slider-container">
+                            <input type="range" id="loan-duration-slider" min="5" max="30" value="20" step="1">
+                            <input type="number" id="loan-duration" value="20" min="5" max="30" step="1">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="interest-rate">Interest Rate (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="interest-rate-slider" min="0.5" max="10" value="1.5" step="0.1">
+                            <input type="number" id="interest-rate" value="1.5" min="0.5" max="10" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="amortization-type">Amortization Type</label>
+                        <select id="amortization-type">
+                            <option value="annuity">Annuity (Equal total payments)</option>
+                            <option value="linear">Linear (Equal principal payments)</option>
+                            <option value="interest-only">Interest-Only (Principal paid at end)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="property-growth-rate">Property Value Growth Rate (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="property-growth-rate-slider" min="0" max="5" value="2" step="0.1">
+                            <input type="number" id="property-growth-rate" value="2" min="0" max="5" step="0.1">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="monthly-rent">Monthly Rent Income (€)</label>
+                        <input type="number" id="monthly-rent" value="2500" min="0" max="5000" step="100">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="rent-growth-rate">Rent Income Growth Rate (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="rent-growth-rate-slider" min="0" max="5" value="0" step="0.1">
+                            <input type="number" id="rent-growth-rate" value="0" min="0" max="5" step="0.1">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="advanced-options">
+                    <h3>Advanced Options</h3>
+                    
+                    <div class="toggle-group">
+                        <label class="toggle">
+                            <input type="checkbox" id="inflation-toggle">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Include Inflation</span>
+                        </label>
+                        
+                        <div class="toggle-content" id="inflation-content">
+                            <div class="input-group">
+                                <label for="inflation-rate">Inflation Rate (%)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="inflation-rate-slider" min="0" max="5" value="2" step="0.1">
+                                    <input type="number" id="inflation-rate" value="2" min="0" max="5" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-group">
+                        <label class="toggle">
+                            <input type="checkbox" id="extra-payments-toggle">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Extra Payments</span>
+                        </label>
+                        
+                        <div class="toggle-content" id="extra-payments-content">
+                            <div class="input-group">
+                                <label for="extra-payment">Monthly Extra Payment (€)</label>
+                                <input type="number" id="extra-payment" value="0" min="0" max="1000" step="10">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-group">
+                        <label class="toggle">
+                            <input type="checkbox" id="invest-cashflow-toggle">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label">Invest Cash Flow</span>
+                        </label>
+                        
+                        <div class="toggle-content" id="invest-cashflow-content">
+                            <div class="input-group">
+                                <label for="investment-rate">Investment Rate (%)</label>
+                                <div class="slider-container">
+                                    <input type="range" id="investment-rate-slider" min="0" max="10" value="0" step="0.1">
+                                    <input type="number" id="investment-rate" value="0" min="0" max="10" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="calculate-btn" class="primary-btn">Calculate</button>
+                    <button id="reset-btn">Reset to Default</button>
+                    <button id="export-btn">Export Results</button>
+                </div>
+            </div>
+            
+            <div class="output-section">
+                <h2>Results</h2>
+                
+                <div class="summary-cards">
+                    <div class="card">
+                        <h3>Monthly Payment</h3>
+                        <p id="monthly-payment">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Total Interest Paid</h3>
+                        <p id="total-interest">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Net Monthly Cash Flow</h3>
+                        <p id="net-cashflow">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Total Accumulated Cash Flow</h3>
+                        <p id="total-cashflow">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Invested Cash Flow Value</h3>
+                        <p id="invested-cashflow">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>End Property Value</h3>
+                        <p id="end-property-value">€0.00</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>End Equity</h3>
+                        <p id="end-equity">€0.00</p>
+                    </div>
+                    
+                    <div class="card highlight">
+                        <h3>Total Value of Assets</h3>
+                        <p id="total-assets">€0.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visualization-section">
+            <h2>Graphs and Tables</h2>
+            
+            <div class="graph-container">
+                <h3>Debt and Property Value Over Time</h3>
+                <canvas id="debt-value-chart"></canvas>
+            </div>
+            
+            <div class="graph-container">
+                <h3>Cash Flow and Equity Over Time</h3>
+                <canvas id="cashflow-equity-chart"></canvas>
+            </div>
+            
+            <div class="table-container">
+                <h3>Year-by-Year Breakdown</h3>
+                <div class="table-scroll">
+                    <table id="yearly-breakdown">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Monthly Payment (€)</th>
+                                <th>Interest Paid (€)</th>
+                                <th>Principal Paid (€)</th>
+                                <th>Remaining Debt (€)</th>
+                                <th>Property Value (€)</th>
+                                <th>Equity (€)</th>
+                                <th>Rent Income (€)</th>
+                                <th>Net Cash Flow (€)</th>
+                                <th>Total Value of Assets (€)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table rows will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Built for financial planning purposes. All values are estimates and subject to real-world changes.</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="main.js"></script>
+</body>
+</html> 
